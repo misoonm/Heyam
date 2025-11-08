@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معرض أعمال مؤسسة الهيام للجرافيكس</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #FFFFFF;
+            --secondary: #8A2BE2;
+            --accent: #9932CC;
+            --text-dark: #2C2C2C;
+            --text-light: #5A5A5A;
+            --gradient-1: linear-gradient(135deg, #8A2BE2 0%, #FFFFFF 100%);
+            --gradient-2: linear-gradient(135deg, #9932CC 0%, #8A2BE2 100%);
+            --gradient-3: linear-gradient(135deg, #FFFFFF 0%, #8A2BE2 100%);
+            --glass: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(138, 43, 226, 0.2);
+            --purple-glow: 0 0 20px rgba(138, 43, 226, 0.3);
+            --purple-glow-intense: 0 0 30px rgba(138, 43, 226, 0.5);
+            --section-padding: 120px 0;
+            --border-radius: 20px;
+            --bg-color: #FFFFFF;
+            --surface-color: rgba(139, 95, 191, 0.1);
+            --text-color: #2C2C2C;
+            --text-secondary: rgba(44, 44, 44, 0.7);
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(138, 43, 226, 0.2);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --blur: blur(12px);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'El Messiri', sans-serif;
+        }
+
+        body {
+            background: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(138, 43, 226, 0.1) 0%, transparent 25%),
+                radial-gradient(circle at 90% 80%, rgba(153, 50, 204, 0.1) 0%, transparent 25%),
+                radial-gradient(circle at 50% 50%, rgba(138, 43, 226, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* التصميم الزجاجي الضبابي */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        /* الشريط العلوي */
+        header {
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
+            background: rgba(255, 255, 255, 0.9);
+            border-bottom: 1px solid rgba(138, 43, 226, 0.2);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.5rem;
+            box-shadow: var(--purple-glow);
+        }
+
+        .logo h1 {
+            font-size: 2rem;
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background: var(--glass);
+            border-radius: 50px;
+            padding: 8px 20px;
+            width: 350px;
+            transition: var(--transition);
+            backdrop-filter: var(--blur);
+            border: 1px solid var(--glass-border);
+        }
+
+        .search-bar:focus-within {
+            box-shadow: 0 0 0 2px var(--secondary);
+        }
+
+        .search-bar input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: var(--text-color);
+            width: 100%;
+            padding: 8px;
+            font-size: 1rem;
+        }
+
+        .search-bar i {
+            color: var(--text-secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            transition: var(--transition);
+            backdrop-filter: var(--blur);
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background: var(--gradient-2);
+            color: white;
+            box-shadow: var(--purple-glow);
+        }
+
+        /* الفلاتر والتصنيفات */
+        .filters-section {
+            padding: 40px 0 20px;
+        }
+
+        .filters {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            color: var(--text-secondary);
+            padding: 12px 24px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            backdrop-filter: var(--blur);
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--gradient-2);
+            color: white;
+            box-shadow: var(--purple-glow);
+            transform: translateY(-2px);
+        }
+
+        .ai-suggestions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+            justify-content: center;
+        }
+
+        .ai-suggestion {
+            background: rgba(138, 43, 226, 0.1);
+            border: 1px solid var(--secondary);
+            color: var(--secondary);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .ai-suggestion:hover {
+            background: var(--secondary);
+            color: white;
+        }
+
+        /* الشبكة الديناميكية */
+        .gallery-container {
+            padding: 40px 0;
+            position: relative;
+            min-height: 70vh;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-auto-rows: 220px;
+            grid-gap: 25px;
+            grid-auto-flow: dense;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: var(--transition);
+            animation: fadeIn 0.8s ease-out;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: var(--purple-glow-intense);
+            border-color: rgba(138, 43, 226, 0.3);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 50%, rgba(255, 255, 255, 0.9));
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+
+        .item-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            z-index: 2;
+            transform: translateY(10px);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .item-info {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .item-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+
+        .item-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 8px;
+        }
+
+        .tag {
+            background: rgba(138, 43, 226, 0.2);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            backdrop-filter: var(--blur);
+            color: var(--secondary);
+        }
+
+        /* تأثير التوهج */
+        .glow-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(138, 43, 226, 0.3) 0%, transparent 70%);
+            opacity: 0;
+            transition: var(--transition);
+            pointer-events: none;
+        }
+
+        .gallery-item.active .glow-effect {
+            opacity: 1;
+        }
+
+        /* تأثير الجدار الحي */
+        .living-wall {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .floating-image {
+            position: absolute;
+            border-radius: 15px;
+            opacity: 0.1;
+            filter: blur(1px);
+            animation: float 20s infinite linear;
+        }
+
+        /* النافذة المنبثقة للصورة */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+            backdrop-filter: var(--blur);
+        }
+
+        .lightbox.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 20px;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.2);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            color: var(--text-dark);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            backdrop-filter: var(--blur);
+        }
+
+        .lightbox-close:hover {
+            background: var(--secondary);
+            color: white;
+            transform: rotate(90deg);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            padding: 0 20px;
+        }
+
+        .lightbox-nav button {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            color: var(--text-dark);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: var(--transition);
+            backdrop-filter: var(--blur);
+        }
+
+        .lightbox-nav button:hover {
+            background: var(--secondary);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        /* لوحة التحكم بالصورة */
+        .image-controls {
+            position: absolute;
+            bottom: -70px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .control-btn {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            color: var(--text-dark);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: var(--transition);
+            backdrop-filter: var(--blur);
+        }
+
+        .control-btn:hover {
+            background: var(--secondary);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        /* تأثيرات الحركة */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(10px, 15px) rotate(5deg); }
+            50% { transform: translate(20px, 5px) rotate(0deg); }
+            75% { transform: translate(10px, 15px) rotate(-5deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
+        }
+
+        @keyframes slowPulse {
+            0%, 100% { opacity: 0.1; }
+            50% { opacity: 0.2; }
+        }
+
+        .floating {
+            animation: float 15s ease-in-out infinite;
+        }
+
+        .pulse {
+            animation: slowPulse 8s ease-in-out infinite;
+        }
+
+        /* التكيف مع الأجهزة المحمولة */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .search-bar {
+                width: 100%;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                grid-auto-rows: 180px;
+            }
+            
+            .nav-links {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .lightbox-nav {
+                padding: 0 10px;
+            }
+            
+            .lightbox-nav button {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        /* شريط التحميل */
+        .loading-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient-2);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+            z-index: 1001;
+        }
+
+        /* تحسينات للشريط الجانبي */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -350px;
+            width: 350px;
+            height: 100vh;
+            background: var(--bg-color);
+            z-index: 999;
+            transition: var(--transition);
+            padding: 20px;
+            backdrop-filter: var(--blur);
+            border-right: 1px solid var(--glass-border);
+        }
+
+        .sidebar.active {
+            left: 0;
+        }
+
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .sidebar-title {
+            font-size: 1.3rem;
+            color: var(--secondary);
+        }
+
+        .sidebar-close {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .enhancement-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 10px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .enhancement-option:hover {
+            background: var(--glass);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            color: var(--text-color);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        @media (max-width: 1024px) {
+            .menu-toggle {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- شريط التحميل -->
+    <div class="loading-bar" id="loadingBar"></div>
+
+    <!-- تأثير الجدار الحي -->
+    <div class="living-wall" id="livingWall"></div>
+
+    <!-- الشريط العلوي -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h1>مؤسسة <span>الهيام</span></h1>
+                </div>
+                
+                <div class="search-bar glass">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="ابحث في الأعمال (مثل: شعارات، هوية بصرية...)">
+                </div>
+                
+                <div class="nav-links">
+                    <a href="#" class="active">المعرض</a>
+                    <a href="#">التصنيفات</a>
+                    <a href="#">المفضلة</a>
+                    <a href="#">اتصل بنا</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- الفلاتر والتصنيفات -->
+    <section class="filters-section">
+        <div class="container">
+            <div class="filters">
+                <button class="filter-btn active">الكل</button>
+                <button class="filter-btn">شعارات</button>
+                <button class="filter-btn"> بوسترات</button>
+                <button class="filter-btn">مطبوعات</button>
+                <button class="filter-btn">إعلانات</button>
+                <button class="filter-btn">مجلة انديزاين</button>
+                <button class="filter-btn">موشن جرافيك</button>
+            </div>
+            
+            <div class="ai-suggestions">
+                <div class="ai-suggestion">تصاميم حديثة</div>
+                <div class="ai-suggestion">أعمال إبداعية</div>
+                <div class="ai-suggestion">تصاميم مؤسسية</div>
+                <div class="ai-suggestion">أعمال تجارية</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- المعرض -->
+    <section class="gallery-container">
+        <div class="container">
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- سيتم إضافة العناصر ديناميكيًا -->
+            </div>
+        </div>
+    </section>
+
+    <!-- نافذة العرض المنبثقة -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="lightbox-nav">
+            <button id="lightboxPrev">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <button id="lightboxNext">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+        </div>
+        <div class="lightbox-content">
+            <img src="" alt="" id="lightboxImage">
+        </div>
+        <div class="image-controls">
+            <button class="control-btn" id="enhanceBtn" title="تحسين الصورة">
+                <i class="fas fa-magic"></i>
+            </button>
+            <button class="control-btn" id="filterBtn" title="الفلاتر">
+                <i class="fas fa-sliders-h"></i>
+            </button>
+            <button class="control-btn" id="favoriteBtn" title="إضافة إلى المفضلة">
+                <i class="far fa-heart"></i>
+            </button>
+            <button class="control-btn" id="downloadBtn" title="تحميل الصورة">
+                <i class="fas fa-download"></i>
+            </button>
+            <button class="control-btn" id="shareBtn" title="مشاركة">
+                <i class="fas fa-share-alt"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- الشريط الجانبي -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2 class="sidebar-title">تحسين الصورة</h2>
+            <button class="sidebar-close" id="sidebarClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="enhancement-option">
+            <input type="checkbox" id="autoEnhance">
+            <label for="autoEnhance">تحسين تلقائي</label>
+        </div>
+        
+        <div class="enhancement-option">
+            <input type="range" id="brightness" min="0" max="200" value="100">
+            <label for="brightness">السطوع</label>
+        </div>
+        
+        <div class="enhancement-option">
+            <input type="range" id="contrast" min="0" max="200" value="100">
+            <label for="contrast">التباين</label>
+        </div>
+        
+        <div class="enhancement-option">
+            <input type="range" id="saturation" min="0" max="200" value="100">
+            <label for="saturation">التشبع</label>
+        </div>
+        
+        <div class="enhancement-option">
+            <input type="range" id="warmth" min="0" max="200" value="100">
+            <label for="warmth">الدفء</label>
+        </div>
+        
+        <div class="enhancement-option">
+            <button class="filter-btn" style="width: 100%; margin-top: 20px;">تطبيق التحسينات</button>
+        </div>
+    </div>
+
+    <script>
+        // بيانات الصور الخاصة بمؤسسة الهيام
+        const images = [
+               {
+        "id": 1,
+        "src": "img/1.png",
+        "title": "تصميم غلاف مجلة",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "إعلانات",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 2,
+        "src": "img/2.jpg",
+        "title": "تصميم اعلان مركز كلية رواد النهضه",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "إعلانات",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 3,
+        "src": "img/3.png",
+        "title": "تصميم اعلان متجر",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "إعلانات",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 4,
+        "src": "img/4.png",
+        "title": "تصميم اعلان فيلم",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "إعلانات",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 5,
+        "src": "img/5.png",
+        "title": "تصميم حملة انقاذ غزة من الجوع",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "إعلانات",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 6,
+        "src": "img/6.png",
+        "title": "تصميم اعلان خدمة مكتب عقارات",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "إعلانات",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 7,
+        "src": "img/7.png",
+        "title": "تصميم اعلان مؤسسة تقنية",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "إعلانات",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 8,
+        "src": "img/8.png",
+        "title": "تصميم اعلان منتج",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "إعلانات",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 9,
+        "src": "img/9.png",
+        "title": "تصميم منتج",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "إعلانات",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 10,
+        "src": "img/10.png",
+        "title": "تصميم منتج",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "إعلانات",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 11,
+        "src": "img/11.jpg",
+        "title": "تصميم اعلان كلية رواد النهضه",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "إعلانات",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 12,
+        "src": "img/12.png",
+        "title": "تصميم منتج",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "إعلانات",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 13,
+        "src": "img/13.jpg",
+        "title": "تصميم اعلان",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "إعلانات",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 14,
+        "src": "img/14.jpg",
+        "title": "تصميم اعلان",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "إعلانات",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 16,
+        "src": "img/16.jpg",
+        "title": "تصميم اعلان",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "إعلانات",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 18,
+        "src": "img/18.jpg",
+        "title": "تصميم غلاف مجلة",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "إعلانات",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 17,
+        "src": "img/17.png",
+        "title": "تصميم اعلان",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "إعلانات",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 15,
+        "src": "img/15.png",
+        "title": "تصميم غلاف مجلة",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "إعلانات",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 19,
+        "src": "img/19.png",
+        "title": "تصميم غلاف مجلة انديزاين",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "مجلة انديزاين",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 20,
+        "src": "img/20.png",
+        "title": "تصميم مجلة انديزاين",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "مجلة انديزاين",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 21,
+        "src": "img/21.png",
+        "title": "تصميم مجلة انديزاين",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "مجلة انديزاين",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 22,
+        "src": "img/22.jpg",
+        "title": "تصميم مجلة انديزاين",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "مجلة انديزاين",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 23,
+        "src": "img/23.jpg",
+        "title": "تصميم مجلة انديزاين",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "مجلة انديزاين",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 24,
+        "src": "img/24.jpg",
+        "title": "تصميم مجلة انديزاين",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "مجلة انديزاين",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 25,
+        "src": "img/25.jpg",
+        "title": "تصميم مجلة انديزاين",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "مجلة انديزاين",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 27,
+        "src": "img/27.png",
+        "title": "تصميم باكج مطبوعات",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "مطبوعات",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 28,
+        "src": "img/28.png",
+        "title": "تصميم باكج مطبوعات",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "مطبوعات",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 29,
+        "src": "img/29.png",
+        "title": "تصميم باكج مطبوعات",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "مطبوعات",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 30,
+        "src": "img/30.png",
+        "title": "تصميم باكج مطبوعات",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "مطبوعات",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 31,
+        "src": "img/31.png",
+        "title": "تصميم باكج مطبوعات",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "مطبوعات",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 60,
+        "src": "img/60.png",
+        "title": "تصميم باكج مطبوعات",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "مطبوعات",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 23,
+        "src": "img/23.jpg",
+        "title": "تصميم كروت شخصيه",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "مطبوعات",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 33,
+        "src": "img/33.jpg",
+        "title": "تصميم كروت شخصية",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "مطبوعات",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 34,
+        "src": "img/34.jpg",
+        "title": "تصميم بطائق",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "مطبوعات",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 35,
+        "src": "img/35.jpg",
+        "title": "تصميم بطائق",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "مطبوعات",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 36,
+        "src": "img/36.png",
+        "title": "تصميم بوستر",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "بوسترات",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 37,
+        "src": "img/37.png",
+        "title": "تصميم بوستر",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "بوسترات",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 38,
+        "src": "img/38.png",
+        "title": "تصميم بوستر",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "بوسترات",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 39,
+        "src": "img/39.png",
+        "title": "تصميم بوستر",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "بوسترات",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 40,
+        "src": "img/40.png",
+        "title": "تصميم بوستر",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "بوسترات",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 41,
+        "src": "img/41.png",
+        "title": "تصميم بوستر",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "بوسترات",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 42,
+        "src": "img/42.jpg",
+        "title": "تصميم بوستر",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "بوسترات",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 43,
+        "src": "img/43.jpg",
+        "title": "تصميم بوستر",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "بوسترات",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 44,
+        "src": "img/44.jpg",
+        "title": "تصميم بوستر",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "بوسترات",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 45,
+        "src": "img/45.png",
+        "title": "تصميم بوستر",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "بوسترات",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 46,
+        "src": "img/46.png",
+        "title": "تصميم بوستر",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "بوسترات",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 47,
+        "src": "img/47.png",
+        "title": "تصميم بوستر",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "بوسترات",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 48,
+        "src": "img/48.png",
+        "title": "تصميم شعارات",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "شعارات",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 49,
+        "src": "img/49.jpg",
+        "title": "تصميم شعارات",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "شعارات",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 51,
+        "src": "img/51.jpg",
+        "title": "تصميم شعارات",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "شعارات",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 52,
+        "src": "img/52.png",
+        "title": "تصميم شعارات",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "شعارات",
+        "colors": ["أزرق", "فضي"]
+    },
+    {
+        "id": 53,
+        "src": "img/53.png",
+        "title": "تصميم شعارات",
+        "tags": ["تصميم", "تقنية", "حديث", "إبداع"],
+        "category": "شعارات",
+        "colors": ["أزرق", "فضي"]
+    }
+        ];
+
+        // إنشاء المعرض ديناميكيًا
+        const galleryGrid = document.getElementById('galleryGrid');
+        const searchInput = document.getElementById('searchInput');
+        const loadingBar = document.getElementById('loadingBar');
+        const livingWall = document.getElementById('livingWall');
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarClose = document.getElementById('sidebarClose');
+        
+        let currentImages = [...images];
+        let currentFilter = 'الكل';
+        
+        function showLoading() {
+            loadingBar.style.transform = 'scaleX(0.3)';
+            setTimeout(() => {
+                loadingBar.style.transform = 'scaleX(0.7)';
+            }, 300);
+        }
+        
+        function hideLoading() {
+            loadingBar.style.transform = 'scaleX(1)';
+            setTimeout(() => {
+                loadingBar.style.transform = 'scaleX(0)';
+            }, 300);
+        }
+        
+        function createGallery() {
+            showLoading();
+            
+            // محاكاة تحميل البيانات
+            setTimeout(() => {
+                galleryGrid.innerHTML = '';
+                
+                currentImages.forEach((image, index) => {
+                    const item = document.createElement('div');
+                    item.className = 'gallery-item';
+                    item.style.animationDelay = `${index * 0.1}s`;
+                    
+                    // إنشاء تخطيطات مختلفة بشكل عشوائي لمحاكاة التخطيط المتكيف
+                    const sizes = [
+                        'grid-column: span 1; grid-row: span 1;',
+                        'grid-column: span 1; grid-row: span 1;',
+                        'grid-column: span 2; grid-row: span 1;',
+                        'grid-column: span 1; grid-row: span 2;',
+                        'grid-column: span 2; grid-row: span 2;'
+                    ];
+                    
+                    item.style.cssText += sizes[Math.floor(Math.random() * sizes.length)];
+                    
+                    item.innerHTML = `
+                        <img src="${image.src}" alt="${image.title}" loading="lazy">
+                        <div class="glow-effect"></div>
+                        <div class="item-info">
+                            <div class="item-title">${image.title}</div>
+                            <div class="item-tags">
+                                ${image.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                            </div>
+                        </div>
+                    `;
+                    
+                    item.addEventListener('click', () => openLightbox(image, index));
+                    galleryGrid.appendChild(item);
+                });
+                
+                hideLoading();
+                createFloatingEffect();
+            }, 800);
+        }
+
+        // فتح نافذة العرض المنبثقة
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightboxImage');
+        const lightboxClose = document.getElementById('lightboxClose');
+        const lightboxPrev = document.getElementById('lightboxPrev');
+        const lightboxNext = document.getElementById('lightboxNext');
+        const enhanceBtn = document.getElementById('enhanceBtn');
+        
+        let currentImageIndex = 0;
+        
+        function openLightbox(image, index) {
+            currentImageIndex = index;
+            lightboxImage.src = image.src;
+            lightboxImage.alt = image.title;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // إضافة تأثير التوهج
+            setTimeout(() => {
+                lightboxImage.style.filter = 'brightness(1.1) contrast(1.05)';
+                setTimeout(() => {
+                    lightboxImage.style.filter = 'brightness(1) contrast(1)';
+                }, 500);
+            }, 100);
+        }
+        
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            sidebar.classList.remove('active');
+        }
+        
+        function showNextImage() {
+            currentImageIndex = (currentImageIndex + 1) % currentImages.length;
+            lightboxImage.src = currentImages[currentImageIndex].src;
+            lightboxImage.alt = currentImages[currentImageIndex].title;
+            
+            // تأثير انتقال سلس
+            lightboxImage.style.opacity = '0';
+            setTimeout(() => {
+                lightboxImage.style.opacity = '1';
+            }, 300);
+        }
+        
+        function showPrevImage() {
+            currentImageIndex = (currentImageIndex - 1 + currentImages.length) % currentImages.length;
+            lightboxImage.src = currentImages[currentImageIndex].src;
+            lightboxImage.alt = currentImages[currentImageIndex].title;
+            
+            // تأثير انتقال سلس
+            lightboxImage.style.opacity = '0';
+            setTimeout(() => {
+                lightboxImage.style.opacity = '1';
+            }, 300);
+        }
+        
+        // إضافة مستمعي الأحداث
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightboxNext.addEventListener('click', showNextImage);
+        lightboxPrev.addEventListener('click', showPrevImage);
+        menuToggle.addEventListener('click', () => sidebar.classList.add('active'));
+        sidebarClose.addEventListener('click', () => sidebar.classList.remove('active'));
+        enhanceBtn.addEventListener('click', () => sidebar.classList.add('active'));
+        
+        // إغلاق النافذة المنبثقة بالنقر خارج المحتوى
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+        
+        // التنقل بين الصور باستخدام لوحة المفاتيح
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowRight') showNextImage();
+            if (e.key === 'ArrowLeft') showPrevImage();
+        });
+
+        // فلترة الصور
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // إزالة الفئة النشطة من جميع الأزرار
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // إضافة الفئة النشطة للزر المحدد
+                button.classList.add('active');
+                
+                currentFilter = button.textContent;
+                
+                if (currentFilter === 'الكل') {
+                    currentImages = [...images];
+                } else {
+                    currentImages = images.filter(img => img.category === currentFilter);
+                }
+                
+                createGallery();
+            });
+        });
+
+        // البحث الدلالي
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            if (searchTerm.length < 2) {
+                if (currentFilter === 'الكل') {
+                    currentImages = [...images];
+                } else {
+                    currentImages = images.filter(img => img.category === currentFilter);
+                }
+            } else {
+                currentImages = images.filter(img => 
+                    img.title.toLowerCase().includes(searchTerm) ||
+                    img.tags.some(tag => tag.toLowerCase().includes(searchTerm)) ||
+                    img.category.toLowerCase().includes(searchTerm) ||
+                    img.colors.some(color => color.toLowerCase().includes(searchTerm))
+                );
+            }
+            
+            createGallery();
+        });
+
+        // محاكاة تأثير الجدار الحي
+        function createLivingWall() {
+            // إضافة صور عشوائية تتحرك في الخلفية
+            for (let i = 0; i < 15; i++) {
+                const floatingImg = document.createElement('div');
+                floatingImg.className = 'floating-image';
+                floatingImg.style.backgroundImage = `url(https://source.unsplash.com/random/150x150?${i})`;
+                floatingImg.style.width = `${Math.random() * 150 + 50}px`;
+                floatingImg.style.height = floatingImg.style.width;
+                floatingImg.style.top = `${Math.random() * 100}%`;
+                floatingImg.style.left = `${Math.random() * 100}%`;
+                floatingImg.style.animationDelay = `${Math.random() * 20}s`;
+                floatingImg.style.animationDuration = `${Math.random() * 30 + 20}s`;
+                livingWall.appendChild(floatingImg);
+            }
+        }
+        
+        function createFloatingEffect() {
+            const items = document.querySelectorAll('.gallery-item');
+            items.forEach((item, index) => {
+                // تأخير عشوائي للحركة
+                const delay = Math.random() * 5;
+                item.style.animationDelay = `${delay}s`;
+                
+                // إضافة تأثير التطبيق العائم لبعض العناصر
+                if (index % 3 === 0) {
+                    item.classList.add('floating');
+                }
+                
+                // تأثير النبض الخفيف
+                if (index % 5 === 0) {
+                    item.classList.add('pulse');
+                }
+            });
+        }
+
+        // تهيئة المعرض عند تحميل الصفحة
+        window.addEventListener('DOMContentLoaded', () => {
+            createGallery();
+            createLivingWall();
+            
+            // محاكاة تحميل الذكاء الاصطناعي
+            setTimeout(() => {
+                const suggestions = document.querySelectorAll('.ai-suggestion');
+                suggestions.forEach(suggestion => {
+                    suggestion.style.opacity = '0';
+                    setTimeout(() => {
+                        suggestion.style.opacity = '1';
+                        suggestion.style.transition = 'opacity 0.5s ease';
+                    }, 300);
+                });
+            }, 1500);
+        });
+
+        // محاكاة تحسين الصورة
+        const autoEnhance = document.getElementById('autoEnhance');
+        autoEnhance.addEventListener('change', function() {
+            if (this.checked) {
+                // محاكاة تطبيق تحسينات الذكاء الاصطناعي
+                lightboxImage.style.filter = 'brightness(1.1) contrast(1.1) saturate(1.2)';
+            } else {
+                lightboxImage.style.filter = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
